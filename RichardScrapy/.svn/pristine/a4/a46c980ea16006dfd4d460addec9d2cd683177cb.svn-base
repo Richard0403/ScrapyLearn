@@ -1,0 +1,49 @@
+http://scrapy-chs.readthedocs.io/zh_CN/0.24/
+
+
+1.
+    scrapy.cfg: 项目配置文件
+    tutorial/: 项目python模块, 呆会代码将从这里导入
+    tutorial/items.py: 项目items文件
+    tutorial/pipelines.py: 项目管道文件
+    tutorial/settings.py: 项目配置文件
+    tutorial/spiders: 放置spider的目录
+2.自定义Spider要重写的方法
+
+    name：爬虫的识别名，它必须是唯一的，在不同的爬虫中你必须定义不同的名字.
+    start_urls：爬虫开始爬的一个URL列表。爬虫从这里开始抓取数据，所以，第一次下载的数据将会从这些URLS开始。其他子URL将会从这些起始URL中继承性生成。
+    start_requests方法 ，自定义规律的url，通过父类方法yield self.make_requests_from_url(url)添加url，
+    parse()：爬虫的方法，调用时候传入从每一个URL传回的Response对象作为参数，response将会是parse方法的唯一的一个参数,通过yield Request(movie_link[0],callback=self.parse_item)
+       把子url传递给parse_item方法。相当于二级url。
+
+    parse_item是我们自定义的方法，用来处理新连接的request后获得的response
+
+    parse_item中提取出我们想要的item
+    parse之后调用yield item或者return item, 把item返回给pipelines,
+
+    pipelines中的process_item()来处理数据，用于存放数据库或者文件
+
+
+3.  import sys
+    reload(sys)
+    #python默认环境编码时ascii
+    sys.setdefaultencoding("utf-8")
+
+
+4. request方法的源码
+     def __init__(self, url, callback=None, method='GET', headers=None, body=None,
+                 cookies=None, meta=None, encoding='utf-8', priority=0,
+                 dont_filter=False, errback=None):
+
+5. response方法的源码
+    def __init__(self, url, status=200, headers=None, body='', flags=None, request=None):
+
+
+6. pipelines无法进入
+    settings文件中
+    ITEM_PIPELINES = {
+        'RichardScrapy.pipelines.RichardscrapyPipeline': 300,
+    }
+    默认时注释掉的，需要手动改一下
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9848cd53-553d-40a1-87c5-33fda31e24c6" name="ServerFile" url="http://122.9.27.15">
+        <fileTransfer host="122.9.27.15" port="22" rootFolder="/home/pyProject/RichardScrapys" accessType="SFTP" password="df9adf99df98df9b" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+1. Mongodb的安装
+
+    a> sudo brew install mongodb
+    b> sudo mongod
+    c> sudo brew pymongo
+
+2. redis 安装
+
+3. scrapy安装

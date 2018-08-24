@@ -1,0 +1,24 @@
+
+
+爬取得内容分为3部分
+
+#银监局
+# cmdline.execute("scrapy crawl YinJianJuPunishSpider".split())
+#银监会机关
+# cmdline.execute("scrapy crawl YinJianHuiJiGuanPunishSpider".split())
+#银监会分局
+#cmdline.execute("scrapy crawl YinJianFenJuPunishSpider".split())
+
+
+三个文件分别负责爬取数据，
+YinJianJuPunishSpider.py
+YinJianHuiJiGuanPunishSpider.py
+YinJianFenJuPunishSpider.py
+
+每个文件内start_requests方法内可以修改要爬取的数据页数
+例如
+#获取1-3页的数据
+for i in range(1,4)
+
+执行Main.py开始爬取数据（可注释文件内的语句，实现单个部分爬取）
+
